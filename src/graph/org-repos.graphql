@@ -1,0 +1,18 @@
+query GetAllOrgRepos($login: String!, $first: Int!, $after: String) {
+  organization(login: $login) {
+    repositories(
+      first: $first
+      after: $after
+      orderBy: {field: NAME, direction: ASC}
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      nodes {
+        name
+        url
+      }
+    }
+  }
+}
