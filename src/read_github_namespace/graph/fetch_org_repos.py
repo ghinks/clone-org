@@ -6,7 +6,7 @@ token = os.getenv("GITHUB_TOKEN")
 reqHeaders = {
     'Authorization': 'Bearer ' + token
 }
-# TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
+
 
 def fetch_org_repos(organization):
     # Select your transport with a defined url endpoint
@@ -15,14 +15,6 @@ def fetch_org_repos(organization):
     # Create a GraphQL client using the defined transport
     client = Client(transport=transport, fetch_schema_from_transport=True)
 
-    # Provide a GraphQL query
-    testQueryText = """
-    query { 
-  viewer { 
-    login
-  }
-}
-    """
     queryText = """
 query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) {
   organization(login: $login) {
