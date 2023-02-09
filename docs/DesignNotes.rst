@@ -23,3 +23,8 @@ Clone defined and state which ones were not cloned too.
 
 Introduce unit testing methodology
 ------------------------------
+Pytest has been choosen as the test too.
+
+CI/CD integration with the github actions
+----------------------------------------
+
