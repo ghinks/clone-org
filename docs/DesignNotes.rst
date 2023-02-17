@@ -28,3 +28,5 @@ Pytest has been choosen as the test too.
 CI/CD integration with the github actions
 ----------------------------------------
 
+Is it possible to detect if the ssh key is valid for the org?
+-------------------------------------------------------
