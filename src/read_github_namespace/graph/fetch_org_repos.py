@@ -52,3 +52,12 @@ query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) 
     result = client.execute(query, variable_values=params)
     print(result)
     return result
+
+def collate(data):
+    try:
+        pass
+        nodes = data["organization"]["repositories"]["nodes"]
+        return nodes
+    except Exception as err:
+        print(f"Unexpected {err}")
+        raise err
