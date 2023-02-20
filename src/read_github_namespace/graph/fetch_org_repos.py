@@ -51,7 +51,6 @@ query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) 
     }
 
     result = client.execute(query, variable_values=params)
-    print(result)
     return result
 
 def collate(data):

@@ -1,7 +1,8 @@
 import argparse
+import os
 
 
-def parse_github():
+def parse_cmd_line():
     """parse the command line arguments for the program
 
     :return:
@@ -27,14 +28,23 @@ def parse_github():
     keys set up in current shell.
     """
     parser.add_argument('-p', '--prot', type=str, choices=["https", "ssh"], default="https", help=proto_help)
+    to_folder_help = """
+    The target folder should be a fully qualified name and the directory structures tested are OSx and Linux.
+    An example would be -f /home/Users/alice/dev/
+    """
+    parser.add_argument("-f", "--fol", type=str, default=os.getcwd(), help=to_folder_help)
     args = parser.parse_args()
     print(args)
     url = get_url_type(args)
-    return dict([("org", args.org), ("url", url)])
+    if not check_folder_exists(args.fol):
+        raise ValueError(f"Folder {args.fol} does not exist")
+    return dict([("org", args.org), ("url_proto", url), ("to_folder", args.fol)])
 
+def check_folder_exists(to_folder):
+    return os.path.isdir(to_folder)
 
 def get_url_type(args):
     url = "url"
-    if args["prot"] == "ssh":
+    if args.prot == "ssh":
         url = "sshUrl"
     return url
