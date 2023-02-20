@@ -8,4 +8,4 @@ if __name__ == "__main__":
     results = fetch_org_repos(organization)
     nodes = collate(results)
     pp(nodes)
-    clone_list(nodes, to_folder)
+    clone_list(nodes, to_folder, "sshUrl")

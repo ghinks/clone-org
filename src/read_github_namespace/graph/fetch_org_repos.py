@@ -38,6 +38,7 @@ query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) 
       nodes {
         name
         url
+        sshUrl
       }
     }
   }

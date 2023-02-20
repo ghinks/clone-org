@@ -8,9 +8,9 @@ def clone(name, url, to_folder):
     os.system(clone_cmd)
 
 
-def clone_list(nodes, to_folder):
+def clone_list(nodes, to_folder, protocol_field ="url"):
     os.chdir(to_folder)
     for node in nodes:
         name = node["name"]
-        url = node["url"]
+        url = node[protocol_field]
         clone(name, url, to_folder)
