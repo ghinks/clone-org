@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
 
@@ -16,35 +17,11 @@ def fetch_org_repos(organization):
     client = Client(transport=transport, fetch_schema_from_transport=True)
 
     # Provide a GraphQL query
-    testQueryText = """
-    query { 
-  viewer { 
-    login
-  }
-}
-    """
-    queryText = """
-query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) {
-  organization(login: $login) {
-    repositories(
-      first: $first
-      after: $after
-      orderBy: {field: NAME, direction: ASC}
-    ) {
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
-      nodes {
-        name
-        url
-        sshUrl
-      }
-    }
-  }
-}
-"""
-    query = gql(queryText)
+    query_text = ""
+    query_file = Path(__file__).with_name('org-repos.graphql')
+    with query_file.open('r') as f:
+        query_text = f.read()
+    query = gql(query_text)
 
     params = {
         "login": organization
