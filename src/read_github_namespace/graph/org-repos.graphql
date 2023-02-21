@@ -1,4 +1,4 @@
-query GetAllOrgRepos($login: String!, $first: Int!, $after: String) {
+query GetAllOrgRepos($login: String!, $first: Int = 100, $after: String = null) {
   organization(login: $login) {
     repositories(
       first: $first
