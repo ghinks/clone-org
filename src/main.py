@@ -18,8 +18,9 @@ if __name__ == "__main__":
     organization = args["org"]
     url_protocol = args["url_proto"]
     to_folder = args["to_folder"]
+    dry_run = args["dry_run"]
     results = fetch_org_repos(organization)
     nodes = collate(results)
-    # pp(nodes)
     tabulate_nodes(nodes, url_protocol)
-    # clone_list(nodes, to_folder, "sshUrl")
+    if not dry_run:
+        clone_list(nodes, to_folder, "sshUrl")

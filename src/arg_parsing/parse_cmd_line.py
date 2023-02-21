@@ -33,11 +33,16 @@ def parse_cmd_line():
     An example would be -f /home/Users/alice/dev/
     """
     parser.add_argument("-f", "--folder", type=str, default=os.getcwd(), help=to_folder_help)
+    dry_run_help = """
+    The user may simply wish to query the organization before cloning. The dry run option will print out the
+    repositories in the organization specified and exit.
+    """
+    parser.add_argument("-d", "--dry-run", action="store_true", help=dry_run_help)
     args = parser.parse_args()
     url = get_url_type(args)
     if not check_folder_exists(args.folder):
         raise ValueError(f"Folder {args.folder} does not exist")
-    return dict([("org", args.organization), ("url_proto", url), ("to_folder", args.folder)])
+    return dict([("org", args.organization), ("url_proto", url), ("to_folder", args.folder), ("dry_run", args.dry_run)])
 
 def check_folder_exists(to_folder):
     return os.path.isdir(to_folder)
