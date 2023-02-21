@@ -16,6 +16,8 @@ def parse_cmd_line():
     and even grep the code base looking for things.
     read_github_namespace is designed to lessen the pain and give you a one stop clone the organization
     toolkit.
+    This module queries the github graphql endpoint and you must have 'GITHUB_TOKEN' defined in your 
+    environment for the organization to be queried. The clone may be optionally either https or ssh
     """
     parser = argparse.ArgumentParser(description=description)
     org_help = """

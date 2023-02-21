@@ -2,16 +2,17 @@ import os
 from pathlib import Path
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
-
-token = os.getenv("GITHUB_TOKEN")
-reqHeaders = {
-    'Authorization': 'Bearer ' + token
-}
 # TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
 
 def fetch_org_repos(organization):
+    token = os.getenv("GITHUB_TOKEN")
+    req_headers = {
+        'Authorization': 'Bearer ' + token
+    }
+    if not token:
+        raise ValueError("No GITHUB_TOKEN in environment variables")
     # Select your transport with a defined url endpoint
-    transport = AIOHTTPTransport(url="https://api.github.com/graphql", headers=reqHeaders)
+    transport = AIOHTTPTransport(url="https://api.github.com/graphql", headers=req_headers)
 
     # Create a GraphQL client using the defined transport
     client = Client(transport=transport, fetch_schema_from_transport=True)
