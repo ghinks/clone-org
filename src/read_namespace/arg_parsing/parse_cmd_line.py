@@ -14,7 +14,7 @@ def parse_cmd_line():
     A common situation that folks find themselves in when starting to work with an organization is
     the ability to check out all the code and essentially familiarize themselves with the code base
     and even grep the code base looking for things.
-    read_github_namespace is designed to lessen the pain and give you a one stop clone the organization
+    read_namespace is designed to lessen the pain and give you a one stop clone the organization
     toolkit.
     This module queries the github graphql endpoint and you must have 'GITHUB_TOKEN' defined in your 
     environment for the organization to be queried. The clone may be optionally either https or ssh

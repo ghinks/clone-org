@@ -1,7 +1,6 @@
-from pprint import pprint as pp
-from src.read_github_namespace.graph.fetch_org_repos import collate, fetch_org_repos
-from src.clone.shell_clone import clone_list
-from src.arg_parsing.parse_cmd_line import parse_cmd_line
+from .read_github_namespace.graph.fetch_org_repos import collate, fetch_org_repos
+from .clone.shell_clone import clone_list
+from .arg_parsing.parse_cmd_line import parse_cmd_line
 from tabulate import tabulate
 
 
@@ -13,7 +12,7 @@ def tabulate_nodes(nodes, url_protocol):
     print(tabulate(table, headers=["name", "url"], tablefmt="github"))
 
 
-if __name__ == "__main__":
+def clone():
     args = parse_cmd_line()
     organization = args["org"]
     url_protocol = args["url_proto"]
@@ -24,3 +23,7 @@ if __name__ == "__main__":
     tabulate_nodes(nodes, url_protocol)
     if not dry_run:
         clone_list(nodes, to_folder, "sshUrl")
+
+
+if __name__ == "__main__":
+    clone()
