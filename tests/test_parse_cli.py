@@ -1,4 +1,4 @@
-from src.read_namespace.arg_parsing import get_url_type
+from src.read_namespace.arg_parsing.parse_cmd_line import get_url_type
 
 
 class ArgueTestFixture:
