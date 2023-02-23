@@ -1,6 +1,4 @@
-import pytest
-
-from src.read_github_namespace.graph.fetch_org_repos import collate
+from src.read_namespace.read_github_namespace.graph.fetch_org_repos import collate
 
 
 data = {"organization": {

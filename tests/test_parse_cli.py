@@ -1,4 +1,4 @@
-from src.arg_parsing.parse_cmd_line import get_url_type
+from src.read_namespace.arg_parsing import get_url_type
 
 
 class ArgueTestFixture:
@@ -6,7 +6,7 @@ class ArgueTestFixture:
         self._prot = prot
 
     @property
-    def prot(self):
+    def protocol(self):
         return self._prot
 
 
