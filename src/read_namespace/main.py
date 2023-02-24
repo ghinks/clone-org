@@ -22,7 +22,7 @@ def clone():
     nodes = collate(results)
     tabulate_nodes(nodes, url_protocol)
     if not dry_run:
-        clone_list(nodes, to_folder, "sshUrl")
+        clone_list(nodes, to_folder, url_protocol)
 
 
 if __name__ == "__main__":
