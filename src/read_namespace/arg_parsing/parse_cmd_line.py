@@ -35,6 +35,11 @@ def parse_cmd_line():
     An example would be -f /home/Users/alice/dev/
     """
     parser.add_argument("-f", "--folder", type=str, default=os.getcwd(), help=to_folder_help)
+    create_folder_help = """
+    To create the target folder set this flag and the directory structure will be created if possible
+    An example would be clone-org -o your_org_name -p https -f ~/temp/my_repos -c
+    """
+    parser.add_argument("-c", "--create", action="store_true", help=create_folder_help)
     dry_run_help = """
     The user may simply wish to query the organization before cloning. The dry run option will print out the
     repositories in the organization specified and exit.
@@ -42,15 +47,26 @@ def parse_cmd_line():
     parser.add_argument("-d", "--dry-run", action="store_true", help=dry_run_help)
     args = parser.parse_args()
     url = get_url_type(args)
-    if not check_folder_exists(args.folder):
-        raise ValueError(f"Folder {args.folder} does not exist")
+    if args.create:
+        create_new_folder(args.folder)
+    else:
+        if not check_folder_exists(args.folder):
+            raise ValueError(f"Folder {args.folder} does not exist")
     return dict([("org", args.organization), ("url_proto", url), ("to_folder", args.folder), ("dry_run", args.dry_run)])
+
 
 def check_folder_exists(to_folder):
     return os.path.isdir(to_folder)
+
 
 def get_url_type(args):
     url = "url"
     if args.protocol == "ssh":
         url = "sshUrl"
     return url
+
+
+def create_new_folder(to_folder):
+    if not check_folder_exists(to_folder):
+        print(f"Creating folder {to_folder}")
+        os.mkdir(to_folder)
