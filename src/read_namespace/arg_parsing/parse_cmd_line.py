@@ -10,41 +10,48 @@ def parse_cmd_line():
     with Github.
     """
     description = """
-    Clone an organization's repos. 
-    A common situation that folks find themselves in when starting to work with an organization is
-    the ability to check out all the code and essentially familiarize themselves with the code base
-    and even grep the code base looking for things.
-    read_namespace is designed to lessen the pain and give you a one stop clone the organization
-    toolkit.
-    This module queries the github graphql endpoint and you must have 'GITHUB_TOKEN' defined in your 
-    environment for the organization to be queried. The clone may be optionally either https or ssh
+    Clone an organization's repos.  A common situation that folks find
+    themselves in when starting to work with an organization is the ability to
+    check out all the code and essentially familiarize themselves with the code
+    base and even grep the code base looking for things.  read_namespace is
+    designed to lessen the pain and give you a one stop clone the organization
+    toolkit.  This module queries the github graphql endpoint and you must have
+    'GITHUB_TOKEN' defined in your environment for the organization to be
+    queried. The clone may be optionally either https or ssh
     """
     parser = argparse.ArgumentParser(description=description)
     org_help = """
-    The organization in Github that you wish to clone all the repositories for.
+    The organization in Github that you wish to clone all the repositories for
     """
     parser.add_argument('-o', '--organization', required=True, help=org_help)
     proto_help = """
-    The protocol to use either https , which will require GITHUB_TOKEN to be defined
-    in your environment variables. Or ssh which will require that you have your ssh
-    keys set up in current shell.
+    The protocol to use either https , which will require GITHUB_TOKEN to be
+    defined in your environment variables. Or ssh which will require that you
+    have your ssh keys set up in current shell.
     """
-    parser.add_argument('-p', '--protocol', type=str, choices=["https", "ssh"], default="https", help=proto_help)
+    parser.add_argument('-p', '--protocol', type=str, choices=["https", "ssh"],
+                        default="https", help=proto_help)
     to_folder_help = """
-    The target folder should be a fully qualified name and the directory structures tested are OSx and Linux.
-    An example would be -f /home/Users/alice/dev/
+    The target folder should be a fully qualified name and the directory
+    structures tested are OSx and Linux.  An example would be -f
+    /home/Users/alice/dev/
     """
-    parser.add_argument("-f", "--folder", type=str, default=os.getcwd(), help=to_folder_help)
+    parser.add_argument("-f", "--folder", type=str, default=os.getcwd(),
+                        help=to_folder_help)
     create_folder_help = """
-    To create the target folder set this flag and the directory structure will be created if possible
-    An example would be clone-org -o your_org_name -p https -f ~/temp/my_repos -c
+    To create the target folder set this flag and the directory structure will
+    be created if possible An example would be clone-org -o your_org_name -p
+    https -f ~/temp/my_repos -c
     """
-    parser.add_argument("-c", "--create", action="store_true", help=create_folder_help)
+    parser.add_argument("-c", "--create", action="store_true",
+                        help=create_folder_help)
     dry_run_help = """
-    The user may simply wish to query the organization before cloning. The dry run option will print out the
-    repositories in the organization specified and exit.
+    The user may simply wish to query the organization before cloning. The dry
+    run option will print out the repositories in the organization specified
+    and exit.
     """
-    parser.add_argument("-d", "--dry-run", action="store_true", help=dry_run_help)
+    parser.add_argument("-d", "--dry-run", action="store_true",
+                        help=dry_run_help)
     args = parser.parse_args()
     url = get_url_type(args)
     if args.create:
@@ -52,7 +59,14 @@ def parse_cmd_line():
     else:
         if not check_folder_exists(args.folder):
             raise ValueError(f"Folder {args.folder} does not exist")
-    return dict([("org", args.organization), ("url_proto", url), ("to_folder", args.folder), ("dry_run", args.dry_run)])
+            return dict([("org",
+                          args.organization),
+                         ("url_proto",
+                          url),
+                         ("to_folder",
+                          args.folder),
+                         ("dry_run",
+                          args.dry_run)])
 
 
 def check_folder_exists(to_folder):
