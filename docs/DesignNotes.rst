@@ -30,3 +30,6 @@ CI/CD integration with the github actions
 
 Is it possible to detect if the ssh key is valid for the org?
 -------------------------------------------------------
+
+Not running from main.py due to imports
+--------------------------------------------------
