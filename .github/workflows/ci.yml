@@ -30,3 +30,6 @@ jobs:
       - name: Test with pytest
         run: |
           pytest tests -m "not integration"
+      - name: Build package
+        run: |
+          python -m build
