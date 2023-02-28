@@ -59,14 +59,14 @@ def parse_cmd_line():
     else:
         if not check_folder_exists(args.folder):
             raise ValueError(f"Folder {args.folder} does not exist")
-            return dict([("org",
-                          args.organization),
-                         ("url_proto",
-                          url),
-                         ("to_folder",
-                          args.folder),
-                         ("dry_run",
-                          args.dry_run)])
+    return dict([("org",
+                  args.organization),
+                 ("url_proto",
+                  url),
+                 ("to_folder",
+                  args.folder),
+                 ("dry_run",
+                  args.dry_run)])
 
 
 def check_folder_exists(to_folder):
