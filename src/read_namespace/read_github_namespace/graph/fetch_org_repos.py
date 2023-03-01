@@ -24,16 +24,13 @@ def fetch_org_repos(organization):
         "login": organization
     }
     endpoint = HTTPEndpoint(url, headers)
-    data = endpoint(query, variables)
+    result = endpoint(query, variables)
 
-    json.dump(data, sys.stdout, sort_keys=True, indent=2, default=str)
-
-    return data
+    return result["data"]
 
 
 def collate(data):
     try:
-        pass
         nodes = data["organization"]["repositories"]["nodes"]
         return nodes
     except Exception as err:
