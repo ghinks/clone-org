@@ -28,10 +28,12 @@ def fetch_org_repos(organization):
     return result
 
 
-def collate(data):
+def collate(query_response):
     try:
-        nodes = data["data"]["organization"]["repositories"]["nodes"]
+        nodes = query_response["data"]["organization"]["repositories"]["nodes"]
         return nodes
     except Exception as err:
+        keys_exists(query_response,
+                    ["data", "organization", "repositories", "nodes"])
         print(f"Unexpected {err}")
         raise err
