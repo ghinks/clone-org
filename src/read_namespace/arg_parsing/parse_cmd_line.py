@@ -54,7 +54,7 @@ def parse_cmd_line():
                         help=dry_run_help)
     args = parser.parse_args()
     url = get_url_type(args)
-    if args.create:
+    if args.create and not args.dry_run:
         create_new_folder(args.folder)
     else:
         if not check_folder_exists(args.folder):
