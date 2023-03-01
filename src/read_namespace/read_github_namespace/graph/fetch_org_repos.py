@@ -1,8 +1,7 @@
 import os
-import sys
 from pathlib import Path
-import json
 from sgqlc.endpoint.http import HTTPEndpoint
+from src.read_namespace.utils.check_dict import keys_exists
 
 
 # TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
@@ -26,12 +25,12 @@ def fetch_org_repos(organization):
     endpoint = HTTPEndpoint(url, headers)
     result = endpoint(query, variables)
 
-    return result["data"]
+    return result
 
 
 def collate(data):
     try:
-        nodes = data["organization"]["repositories"]["nodes"]
+        nodes = data["data"]["organization"]["repositories"]["nodes"]
         return nodes
     except Exception as err:
         print(f"Unexpected {err}")
