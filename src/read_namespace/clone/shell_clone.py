@@ -1,4 +1,3 @@
-import sys
 import os
 
 
@@ -8,7 +7,7 @@ def clone(name, url, to_folder):
     os.system(clone_cmd)
 
 
-def clone_list(nodes, to_folder, protocol_field ="url"):
+def clone_list(nodes, to_folder, protocol_field="url"):
     os.chdir(to_folder)
     for node in nodes:
         name = node["name"]

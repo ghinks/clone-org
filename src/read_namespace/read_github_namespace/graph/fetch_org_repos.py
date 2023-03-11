@@ -3,6 +3,7 @@ from pathlib import Path
 from sgqlc.endpoint.http import HTTPEndpoint
 from ...utils.check_dict import nested_keys_exist
 
+
 # TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
 
 def fetch_org_repos(organization):
