@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from sgqlc.endpoint.http import HTTPEndpoint
-from ...utils.check_dict import nested_keys_exist
+from ..utils.check_dict import nested_keys_exist
 
 
 # TODO create a unit test ,
@@ -16,7 +16,6 @@ def fetch_org_repos(organization):
         raise ValueError("No GITHUB_TOKEN in environment variables")
     url = 'https://api.github.com/graphql'
     # Provide a GraphQL query
-    query = ""
     query_file = Path(__file__).with_name('org-repos.graphql')
     with query_file.open('r') as f:
         query = f.read()

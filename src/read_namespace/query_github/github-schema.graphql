@@ -11590,9 +11590,9 @@ enum OrderDirection {
 
 "The permissions available to members on an Organization."
 enum OrgAddMemberAuditEntryPermission {
-    #Can read, clone, push, and add collaborators to repositories.
+    #Can read, shell_cmds, push, and add collaborators to repositories.
     ADMIN
-    #Can read and clone repositories.
+    #Can read and shell_cmds repositories.
     READ
 }
 
@@ -11650,21 +11650,21 @@ enum OrgRemoveOutsideCollaboratorAuditEntryReason {
 
 "The default permission a repository can have in an Organization."
 enum OrgUpdateDefaultRepositoryPermissionAuditEntryPermission {
-    #Can read, clone, push, and add collaborators to repositories.
+    #Can read, shell_cmds, push, and add collaborators to repositories.
     ADMIN
     #No default permission value.
     NONE
-    #Can read and clone repositories.
+    #Can read and shell_cmds repositories.
     READ
-    #Can read, clone and push to repositories.
+    #Can read, shell_cmds and push to repositories.
     WRITE
 }
 
 "The permissions available to members on an Organization."
 enum OrgUpdateMemberAuditEntryPermission {
-    #Can read, clone, push, and add collaborators to repositories.
+    #Can read, shell_cmds, push, and add collaborators to repositories.
     ADMIN
-    #Can read and clone repositories.
+    #Can read and shell_cmds repositories.
     READ
 }
 
@@ -12178,15 +12178,15 @@ enum RepositoryOrderField {
 
 "The access level to a repository"
 enum RepositoryPermission {
-    #Can read, clone, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators
+    #Can read, shell_cmds, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators
     ADMIN
-    #Can read, clone, and push to this repository. They can also manage issues, pull requests, and some repository settings
+    #Can read, shell_cmds, and push to this repository. They can also manage issues, pull requests, and some repository settings
     MAINTAIN
-    #Can read and clone this repository. Can also open and comment on issues and pull requests
+    #Can read and shell_cmds this repository. Can also open and comment on issues and pull requests
     READ
-    #Can read and clone this repository. Can also manage issues and pull requests
+    #Can read and shell_cmds this repository. Can also manage issues and pull requests
     TRIAGE
-    #Can read, clone, and push to this repository. Can also manage issues and pull requests
+    #Can read, shell_cmds, and push to this repository. Can also manage issues and pull requests
     WRITE
 }
 

@@ -14,14 +14,14 @@ def parse_cmd_line():
     themselves in when starting to work with an organization is the ability to
     check out all the code and essentially familiarize themselves with the code
     base and even grep the code base looking for things.  read_namespace is
-    designed to lessen the pain and give you a one stop clone the organization
+    designed to lessen the pain and give you a one stop shell_cmds the organization
     toolkit.  This module queries the github graphql endpoint and you must have
     'GITHUB_TOKEN' defined in your environment for the organization to be
-    queried. The clone may be optionally either https or ssh
+    queried. The shell_cmds may be optionally either https or ssh
     """
     parser = argparse.ArgumentParser(description=description)
     org_help = """
-    The organization in Github that you wish to clone all the repositories for
+    The organization in Github that you wish to shell_cmds all the repositories for
     """
     parser.add_argument('-o', '--organization', required=True, help=org_help)
     proto_help = """
@@ -40,7 +40,7 @@ def parse_cmd_line():
                         help=to_folder_help)
     create_folder_help = """
     To create the target folder set this flag and the directory structure will
-    be created if possible An example would be clone-org -o your_org_name -p
+    be created if possible An example would be shell_cmds-org -o your_org_name -p
     https -f ~/temp/my_repos -c
     """
     parser.add_argument("-c", "--create", action="store_true",

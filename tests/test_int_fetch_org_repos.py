@@ -1,6 +1,6 @@
 import pytest
 
-from src.read_namespace.read_github_namespace.graph.fetch_org_repos import fetch_org_repos
+from src.read_namespace.query_github.fetch_org_repos import fetch_org_repos
 
 @pytest.mark.integration
 def test_fetch():
