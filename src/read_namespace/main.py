@@ -1,4 +1,5 @@
-from .read_github_namespace.graph.fetch_org_repos import collate, fetch_org_repos
+from .read_github_namespace.graph.fetch_org_repos import collate, \
+    fetch_org_repos
 from .clone.shell_clone import clone_list
 from .arg_parsing.parse_cmd_line import parse_cmd_line
 from tabulate import tabulate
