@@ -1,5 +1,5 @@
 import pytest
-from src.read_namespace.utils.check_dict import keys_exists
+from src.read_namespace.utils.check_dict import nested_keys_exist
 
 
 @pytest.fixture()
@@ -27,12 +27,12 @@ def response_data():
 
 
 def test_keys_exist(response_data):
-    assert keys_exists(response_data["passing"],
-                       ["data", "organization", "repositories",
+    assert nested_keys_exist(response_data["passing"],
+                             ["data", "organization", "repositories",
                         "nodes"]) == True
 
 
 def test_keys_do_not_exist(response_data):
-    assert keys_exists(response_data["failing"],
-                       ["data", "organization", "repositories",
+    assert nested_keys_exist(response_data["failing"],
+                             ["data", "organization", "repositories",
                         "nodes"]) == False

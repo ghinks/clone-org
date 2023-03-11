@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from sgqlc.endpoint.http import HTTPEndpoint
-from src.read_namespace.utils.check_dict import keys_exists
+from src.read_namespace.utils.check_dict import nested_keys_exist
 
 
 # TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
@@ -33,7 +33,7 @@ def collate(query_response):
         nodes = query_response["data"]["organization"]["repositories"]["nodes"]
         return nodes
     except Exception as err:
-        keys_exists(query_response,
-                    ["data", "organization", "repositories", "nodes"])
+        nested_keys_exist(query_response,
+                          ["data", "organization", "repositories", "nodes"])
         print(f"Unexpected {err}")
         raise err

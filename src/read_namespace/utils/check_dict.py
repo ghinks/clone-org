@@ -1,4 +1,4 @@
-def keys_exists(dictionary, keys):
+def nested_keys_exist(dictionary, keys):
     keys_found = []
     nested_dict = dictionary
 
@@ -11,7 +11,7 @@ def keys_exists(dictionary, keys):
                 chain = ""
                 for key in list(keys_found):
                     chain+=f"{key}."
-            print(f"keys found were {chain}MISSING")
+            print(f"keys found were {chain}, next key was MISSING")
             return False
     return True
 
