@@ -10,9 +10,7 @@ def nested_keys_exist(dictionary, keys):
             if len(keys_found):
                 chain = ""
                 for key in list(keys_found):
-                    chain+=f"{key}."
+                    chain += f"{key}."
             print(f"keys found were {chain}, next key was MISSING")
             return False
     return True
-
-
