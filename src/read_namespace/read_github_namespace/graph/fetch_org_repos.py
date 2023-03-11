@@ -1,9 +1,7 @@
 import os
-import sys
 from pathlib import Path
-import json
 from sgqlc.endpoint.http import HTTPEndpoint
-
+from ...utils.check_dict import nested_keys_exist
 
 # TODO create a unit test , look into [mock](https://pypi.org/project/pytest-asyncio/)
 
@@ -26,13 +24,15 @@ def fetch_org_repos(organization):
     endpoint = HTTPEndpoint(url, headers)
     result = endpoint(query, variables)
 
-    return result["data"]
+    return result
 
 
-def collate(data):
+def collate(query_response):
     try:
-        nodes = data["organization"]["repositories"]["nodes"]
+        nodes = query_response["data"]["organization"]["repositories"]["nodes"]
         return nodes
     except Exception as err:
+        nested_keys_exist(query_response,
+                          ["data", "organization", "repositories", "nodes"])
         print(f"Unexpected {err}")
         raise err

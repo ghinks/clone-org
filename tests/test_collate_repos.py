@@ -1,7 +1,7 @@
-from src.read_namespace.read_github_namespace.graph.fetch_org_repos import collate
+from src.read_namespace.read_github_namespace.graph.fetch_org_repos import \
+    collate
 
-
-data = {"organization": {
+response = {"data": {"organization": {
     "repositories": {
         "pageInfo": {
             "endCursor": "Y3Vyc29yOnYyOpKkcnViec4FZeYV",
@@ -62,9 +62,11 @@ data = {"organization": {
             }
         ]
     }
-}}
+}}}
+
 
 def test_collate():
     test_org = "kubernetes-client"
-    collated = collate(data)
-    assert len(collated) == len(data["organization"]["repositories"]["nodes"])
+    collated = collate(response)
+    assert len(collated) == len(
+        response["data"]["organization"]["repositories"]["nodes"])
