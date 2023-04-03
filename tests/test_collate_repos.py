@@ -1,4 +1,4 @@
-from src.read_namespace.read_github_namespace.graph.fetch_org_repos import \
+from src.read_namespace.query_github.fetch_org_repos import \
     collate
 
 response = {"data": {"organization": {
