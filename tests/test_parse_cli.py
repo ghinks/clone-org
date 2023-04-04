@@ -1,6 +1,6 @@
 import pytest
 from src.read_namespace.arg_parsing.parse_cmd_line import get_url_type, \
-    create_new_folder, get_toml_version
+    create_new_folder
 import os
 import uuid
 
@@ -35,8 +35,3 @@ def test_create_folder():
         if os.path.isdir(to_folder):
             os.rmdir(to_folder)
 
-
-def test_read_toml():
-    data = get_toml_version()
-    print(data)
-    assert data[:3] == "0.0"

@@ -1,7 +1,9 @@
+from pathlib import Path
 import argparse
 import os
 import tomllib
 from ..utils.check_dict import nested_keys_exist
+import pkg_resources
 
 
 def parse_cmd_line():
@@ -104,15 +106,6 @@ def create_new_folder(to_folder):
         print(f"Creating folder {to_folder}")
         os.mkdir(to_folder)
 
-def get_toml_version():
-    pt = '../pyproject.toml'
-    with open(pt, "rb") as f:
-        data = tomllib.load(f)
-    if nested_keys_exist(data, ['project', 'version']):
-        version = data['project']['version']
-        return version
-    raise KeyError("was expecting toml with project containing version")
-
 def print_toml_version():
-    version = get_toml_version()
-    print(f"Current version is f{version}")
+    version = pkg_resources.get_distribution("read-namespace")
+    print(f"Current version is {version}")
