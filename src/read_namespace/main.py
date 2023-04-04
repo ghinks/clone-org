@@ -12,10 +12,12 @@ def tabulate_nodes(nodes, url_protocol):
     for node in nodes:
         if type(node) is dict:
             primary_language = "not defined"
-            if nested_keys_exist(node, check_list) and node["primaryLanguage"]["name"]:
+            if nested_keys_exist(node, check_list) and \
+                    node["primaryLanguage"]["name"]:
                 primary_language = node["primaryLanguage"]["name"]
             table.append([node["name"], node[url_protocol], primary_language])
-    print(tabulate(table, headers=["name", "url", "language"], tablefmt="github"))
+    print(tabulate(table, headers=["name", "url", "language"],
+                   tablefmt="github"))
 
 
 def clone():
