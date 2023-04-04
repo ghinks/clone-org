@@ -26,6 +26,12 @@ def parse_cmd_line():
     """
     # we cannot make org required as we want the -v option for version
     parser.add_argument('-o', '--organization', required=False, help=org_help)
+    language_help = """
+    Github classes languages with well known names such as Python, Go, shell
+    etc. You may pass a filter -l python and it will compare it to the given
+    primary language assigned to the repo
+    """
+    parser.add_argument("-l", "--language", help=language_help)
     proto_help = """
     The protocol to use either https , which will require GITHUB_TOKEN to be
     defined in your environment variables. Or ssh which will require that you
@@ -84,7 +90,9 @@ def parse_cmd_line():
                  ("to_folder",
                   args.folder),
                  ("dry_run",
-                  args.dry_run)])
+                  args.dry_run),
+                 ("language",
+                  args.language)])
 
 
 def check_folder_exists(to_folder):
