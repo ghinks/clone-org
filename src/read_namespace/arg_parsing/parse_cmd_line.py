@@ -1,5 +1,6 @@
 import argparse
 import os
+import pkg_resources
 
 
 def parse_cmd_line():
@@ -23,7 +24,8 @@ def parse_cmd_line():
     org_help = """
     The organization in Github that you wish to clone all the repositories for
     """
-    parser.add_argument('-o', '--organization', required=True, help=org_help)
+    # we cannot make org required as we want the -v option for version
+    parser.add_argument('-o', '--organization', required=False, help=org_help)
     proto_help = """
     The protocol to use either https , which will require GITHUB_TOKEN to be
     defined in your environment variables. Or ssh which will require that you
@@ -52,10 +54,26 @@ def parse_cmd_line():
     """
     parser.add_argument("-d", "--dry-run", action="store_true",
                         help=dry_run_help)
+    version_help = """
+    Print version and exit
+    """
+    parser.add_argument("-v", "--version", action="store_true",
+                        help=version_help)
     args = parser.parse_args()
     url = get_url_type(args)
-    if args.create and not args.dry_run:
+    if args.dry_run and args.create:
+        parser.error("Cannot create a folder in a dry run")
+        exit(0)
+    if args.version is False and args.organization is None:
+        parser.error("The -o organization argument is required")
+        exit(0)
+    if args.version:
+        print_toml_version()
+        exit(0)
+    elif args.create and not args.dry_run:
         create_new_folder(args.folder)
+    elif args.dry_run:
+        pass
     else:
         if not check_folder_exists(args.folder):
             raise ValueError(f"Folder {args.folder} does not exist")
@@ -84,3 +102,8 @@ def create_new_folder(to_folder):
     if not check_folder_exists(to_folder):
         print(f"Creating folder {to_folder}")
         os.mkdir(to_folder)
+
+
+def print_toml_version():
+    version = pkg_resources.get_distribution("read-namespace")
+    print(f"Current version is {version}")
