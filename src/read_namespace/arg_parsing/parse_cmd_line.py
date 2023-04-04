@@ -1,4 +1,3 @@
-from pathlib import Path
 import argparse
 import os
 import pkg_resources
@@ -103,6 +102,7 @@ def create_new_folder(to_folder):
     if not check_folder_exists(to_folder):
         print(f"Creating folder {to_folder}")
         os.mkdir(to_folder)
+
 
 def print_toml_version():
     version = pkg_resources.get_distribution("read-namespace")
