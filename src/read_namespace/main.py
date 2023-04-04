@@ -3,14 +3,19 @@ from .query_github.fetch_org_repos import collate, \
 from .clone.shell_clone import clone_list
 from .arg_parsing.parse_cmd_line import parse_cmd_line
 from tabulate import tabulate
+from .utils.check_dict import nested_keys_exist
 
 
 def tabulate_nodes(nodes, url_protocol):
     table = []
+    check_list = ["primaryLanguage", "name"]
     for node in nodes:
-        row = [node["name"], node[url_protocol]]
-        table.append(row)
-    print(tabulate(table, headers=["name", "url"], tablefmt="github"))
+        if type(node) is dict:
+            primary_language = "not defined"
+            if nested_keys_exist(node, check_list) and node["primaryLanguage"]["name"]:
+                primary_language = node["primaryLanguage"]["name"]
+            table.append([node["name"], node[url_protocol], primary_language])
+    print(tabulate(table, headers=["name", "url", "language"], tablefmt="github"))
 
 
 def clone():
@@ -19,11 +24,12 @@ def clone():
     url_protocol = args["url_proto"]
     to_folder = args["to_folder"]
     dry_run = args["dry_run"]
+    language = args.get("language")
     results = fetch_org_repos(organization)
     nodes = collate(results)
     tabulate_nodes(nodes, url_protocol)
     if not dry_run:
-        clone_list(nodes, to_folder, url_protocol)
+        clone_list(nodes, to_folder, url_protocol, language)
 
 
 if __name__ == "__main__":
