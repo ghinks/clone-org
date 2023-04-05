@@ -4,6 +4,7 @@ from sgqlc.endpoint.http import HTTPEndpoint
 from ..utils.check_dict import nested_keys_exist
 from math import ceil
 
+
 # TODO create a unit test ,
 # look into [mock](https://pypi.org/project/pytest-asyncio/)
 def org_graph_query(organization, query_file, variables):
@@ -54,20 +55,21 @@ def fetch_repo_by_page(organization):
         print("Error fetching the count of repos due to the response "
               "count nesting")
         raise err
-    pages = ceil(count/page_size) + 1
+    pages = ceil(count / page_size) + 1
     after = None
     nodes = []
     for page_count in range(1, pages):
         org_data = fetch_org_repos(organization, page_size, after)
         nodes.extend(collate(org_data))
-        if nested_keys_exist(org_data, ["data", "organization", "repositories", "pageInfo", "endCursor" ]):
-            page_info = org_data["data"]["organization"]["repositories"]["pageInfo"]
+        if nested_keys_exist(org_data, ["data", "organization", "repositories",
+                                        "pageInfo", "endCursor"]):
+            page_info = org_data["data"]["organization"]["repositories"][
+                "pageInfo"]
             after = page_info["endCursor"]
             has_next_page = page_info["hasNextPage"]
             if not has_next_page:
                 break
     return nodes
-
 
 
 def collate(query_response):
