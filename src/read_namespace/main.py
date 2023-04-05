@@ -1,5 +1,4 @@
-from .query_github.fetch_org_repos import collate, \
-    fetch_org_repos
+from .query_github.fetch_org_repos import fetch_repo_by_page
 from .clone.shell_clone import clone_list
 from .arg_parsing.parse_cmd_line import parse_cmd_line
 from tabulate import tabulate
@@ -27,8 +26,7 @@ def clone():
     to_folder = args["to_folder"]
     dry_run = args["dry_run"]
     language = args.get("language")
-    results = fetch_org_repos(organization)
-    nodes = collate(results)
+    nodes = fetch_repo_by_page(organization)
     tabulate_nodes(nodes, url_protocol)
     if not dry_run:
         clone_list(nodes, to_folder, url_protocol, language)
