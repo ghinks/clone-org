@@ -30,7 +30,7 @@ def parse_cmd_line():
     language_help = """
     Github classes languages with well known names such as Python, Go, shell
     etc. You may pass a filter -l python and it will compare it to the given
-    primary language assigned to the repo. Comma separated strings such as 
+    primary language assigned to the repo. Comma separated strings such as
     python,java,javascript are also accepted. Names are defined by github
     in the github/linguist repo.
     """

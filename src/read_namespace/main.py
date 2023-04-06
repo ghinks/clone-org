@@ -1,5 +1,4 @@
-from .query_github.fetch_org_repos import collate, \
-    fetch_repo_by_page
+from .query_github.fetch_org_repos import fetch_repo_by_page
 from .clone.shell_clone import clone_list, matches_given_language
 from .arg_parsing.parse_cmd_line import parse_cmd_line, split_languages
 from tabulate import tabulate
