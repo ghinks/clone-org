@@ -1,6 +1,6 @@
 import pytest
 from src.read_namespace.arg_parsing.parse_cmd_line import get_url_type, \
-    create_new_folder
+    create_new_folder, split_languages
 import os
 import uuid
 
@@ -35,3 +35,10 @@ def test_create_folder():
         if os.path.isdir(to_folder):
             os.rmdir(to_folder)
 
+
+def test_split_languages():
+    passing_list = [("java,braces", 2), ("python,c,c++", 3), ("c", 1),
+                    ("c,cobol", 2), ("c,c++", 2), ("",0)]
+    for languages, ln in passing_list:
+        result = split_languages(languages)
+        assert len(result) == ln
