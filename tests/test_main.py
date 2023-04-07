@@ -15,9 +15,19 @@ response = {
             "https": "b",
             "url": "https://github.com/kubernetes-client/c"
         },
+        {
+            "name": "d",
+            "https": "e",
+            "url": "https://github.com/kubernetes-client/c",
+            "primaryLanguage": {
+                "name": "Java"
+            }
+        },
     ]
 }
 
 
 def test_tabulate():
-    tabulate_nodes(response["nodes"], "https")
+    tabulate_nodes(response["nodes"], "https", ["Python"])
+    tabulate_nodes(response["nodes"], "https", ["Python,Java"])
+    tabulate_nodes(response["nodes"], "https", [])

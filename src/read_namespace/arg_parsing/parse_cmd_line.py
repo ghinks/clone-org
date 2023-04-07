@@ -1,3 +1,4 @@
+import re
 import argparse
 import os
 import pkg_resources
@@ -8,7 +9,7 @@ def parse_cmd_line():
 
     :return:
     Dictionary containing the org and the url type to use
-    with Github.
+    with GitHub.
     """
     description = """
     Clone an organization's repos.  A common situation that folks find
@@ -29,9 +30,12 @@ def parse_cmd_line():
     language_help = """
     Github classes languages with well known names such as Python, Go, shell
     etc. You may pass a filter -l python and it will compare it to the given
-    primary language assigned to the repo
+    primary language assigned to the repo. Comma separated strings such as
+    python,java,javascript are also accepted. Names are defined by github
+    in the github/linguist repo.
     """
-    parser.add_argument("-l", "--language", help=language_help)
+    parser.add_argument("-l", "--languages", help=language_help,
+                        type=str, default="")
     proto_help = """
     The protocol to use either https , which will require GITHUB_TOKEN to be
     defined in your environment variables. Or ssh which will require that you
@@ -91,8 +95,8 @@ def parse_cmd_line():
                   args.folder),
                  ("dry_run",
                   args.dry_run),
-                 ("language",
-                  args.language)])
+                 ("languages",
+                  args.languages)])
 
 
 def check_folder_exists(to_folder):
@@ -115,3 +119,15 @@ def create_new_folder(to_folder):
 def print_toml_version():
     version = pkg_resources.get_distribution("read-namespace")
     print(f"Current version is {version}")
+
+
+def split_languages(languages):
+    """parse languages for a list option and return a list of languages"""
+    if re.search(".*,{1,}.*", languages):
+        return languages.split(",")
+    # no comma separated lists
+    elif len(languages) > 0:
+        return [languages]
+    # empty array is falsy whereas a split on an empty array produces a
+    # non-empty array
+    return []
