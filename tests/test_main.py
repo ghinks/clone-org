@@ -1,4 +1,4 @@
-from src.read_namespace.main import tabulate_nodes
+from src.read_namespace.query_github.fetch_org_repos import tabulate_nodes
 
 response = {
     "nodes": [

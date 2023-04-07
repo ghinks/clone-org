@@ -25,6 +25,6 @@ def test_fetch_count():
 @pytest.mark.integration
 def test_fetch_by_pages():
     try:
-        fetch_repo_by_page('resy')
+        fetch_repo_by_page('kubernetes')
     except Exception:
         pytest.fail("Exception raised ...")
