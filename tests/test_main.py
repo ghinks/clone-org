@@ -28,6 +28,6 @@ response = {
 
 
 def test_tabulate():
-    tabulate_nodes(response["nodes"], "https", ["Python"])
-    tabulate_nodes(response["nodes"], "https", ["Python,Java"])
-    tabulate_nodes(response["nodes"], "https", [])
+    tabulate_nodes(response["nodes"], "https")
+    tabulate_nodes(response["nodes"], "https")
+    tabulate_nodes(response["nodes"], "https")

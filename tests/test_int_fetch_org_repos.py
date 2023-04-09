@@ -1,7 +1,7 @@
 import pytest
 
 from src.read_namespace.query_github.fetch_org_repos import fetch_org_repos, \
-    fetch_num_org_repos, fetch_repo_by_page
+    fetch_num_org_repos, paginate_over_org
 
 
 @pytest.mark.integration
@@ -25,6 +25,6 @@ def test_fetch_count():
 @pytest.mark.integration
 def test_fetch_by_pages():
     try:
-        fetch_repo_by_page('kubernetes')
+        paginate_over_org('kubernetes')
     except Exception:
         pytest.fail("Exception raised ...")
