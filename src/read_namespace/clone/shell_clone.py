@@ -1,5 +1,4 @@
 import os
-from ..utils.check_dict import nested_keys_exist
 
 
 def matches_given_language(languages, repo_language):
@@ -17,7 +16,6 @@ def clone(name, url, to_folder):
 
 def clone_list(nodes, to_folder, protocol_field="url"):
     os.chdir(to_folder)
-    check_list = ["primaryLanguage", "name"]
     for node in nodes:
         name = node["name"]
         url = node[protocol_field]
