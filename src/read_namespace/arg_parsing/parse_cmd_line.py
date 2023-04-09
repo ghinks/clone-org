@@ -96,7 +96,7 @@ def parse_cmd_line():
                  ("dry_run",
                   args.dry_run),
                  ("languages",
-                  args.languages)])
+                  split_languages(args.languages))])
 
 
 def check_folder_exists(to_folder):

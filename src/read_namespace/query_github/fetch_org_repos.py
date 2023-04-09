@@ -3,6 +3,8 @@ from pathlib import Path
 from sgqlc.endpoint.http import HTTPEndpoint
 from ..utils.check_dict import nested_keys_exist
 from math import ceil
+from tabulate import tabulate
+from ..clone.shell_clone import matches_given_language
 
 
 # TODO create a unit test ,
@@ -45,6 +47,7 @@ def fetch_org_repos(organization, page_sz, after=None):
 def fetch_repo_by_page(organization):
     page_size = 50
     count_data = fetch_num_org_repos(organization)
+    count = 0
     try:
         if nested_keys_exist(count_data,
                              ["data", "organization", "repositories",
@@ -70,6 +73,31 @@ def fetch_repo_by_page(organization):
             if not has_next_page:
                 break
     return nodes
+
+
+def tabulate_nodes(nodes, url_protocol, languages):
+    table = []
+    check_list = ["primaryLanguage", "name"]
+    for node in nodes:
+        if type(node) is dict:
+            primary_language = "not defined"
+            # get the primary language if given
+            if nested_keys_exist(node, check_list) and \
+                    node["primaryLanguage"]["name"]:
+                primary_language = node["primaryLanguage"]["name"]
+            # if no languages given just add all
+            if len(languages) == 0:
+                table.append([node["name"], node[url_protocol],
+                              primary_language])
+            # if languages were defined check them
+            if len(languages) > 0 and matches_given_language(languages,
+                                                             primary_language):
+                table.append([node["name"], node[url_protocol],
+                              primary_language])
+    table_data = tabulate(table, headers=["name", "url", "language"],
+                          tablefmt="github")
+    print(table_data)
+    return table_data
 
 
 def collate(query_response):
