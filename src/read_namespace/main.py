@@ -1,4 +1,5 @@
-from .query_github.fetch_org_repos import paginate_over_org, tabulate_nodes, filter_by_language
+from .query_github.fetch_org_repos import paginate_over_org, tabulate_nodes, \
+    filter_by_language
 from .clone.shell_clone import clone_list
 from .arg_parsing.parse_cmd_line import parse_cmd_line
 
