@@ -10,6 +10,7 @@ from ..clone.shell_clone import matches_given_language
 # TODO create a unit test ,
 # look into [mock](https://pypi.org/project/pytest-asyncio/)
 def org_graph_query(organization, query_file, variables):
+    """Execute Graph query against GitHub API, using a query and variables"""
     token = os.getenv("GITHUB_TOKEN")
     headers = {
         'Authorization': 'Bearer ' + token
@@ -29,6 +30,7 @@ def org_graph_query(organization, query_file, variables):
 
 
 def fetch_num_org_repos(organization):
+    """Fetch the number of repositories in an organization"""
     variables = {
         "login": organization
     }
@@ -36,6 +38,7 @@ def fetch_num_org_repos(organization):
 
 
 def fetch_org_repos(organization, page_sz, after=None):
+    """Fetch the repositories in an organization by page size"""
     variables = {
         "login": organization,
         "first": page_sz,
@@ -44,7 +47,8 @@ def fetch_org_repos(organization, page_sz, after=None):
     return org_graph_query(organization, "org-repos.graphql", variables)
 
 
-def fetch_repo_by_page(organization):
+def paginate_over_org(organization):
+    """Paginate over organizations repositories"""
     page_size = 50
     count_data = fetch_num_org_repos(organization)
     count = 0
@@ -75,8 +79,30 @@ def fetch_repo_by_page(organization):
     return nodes
 
 
-def tabulate_nodes(nodes, url_protocol, languages):
+def tabulate_nodes(nodes, url_protocol):
     table = []
+    check_list = ["primaryLanguage", "name"]
+    for node in nodes:
+        if type(node) is dict:
+            # get the primary language if given
+            primary_language = get_prim_lang(check_list, node)
+            table.append([node["name"], node[url_protocol], primary_language])
+    table_data = tabulate(table, headers=["name", "url", "language"],
+                          tablefmt="github")
+    print(table_data)
+    return table_data
+
+
+def get_prim_lang(check_list, node):
+    primary_language = "not defined"
+    if nested_keys_exist(node, check_list) and \
+            node["primaryLanguage"]["name"]:
+        primary_language = node["primaryLanguage"]["name"]
+    return primary_language
+
+
+def filter_by_language(nodes, languages):
+    filtered_nodes = []
     check_list = ["primaryLanguage", "name"]
     for node in nodes:
         if type(node) is dict:
@@ -87,17 +113,12 @@ def tabulate_nodes(nodes, url_protocol, languages):
                 primary_language = node["primaryLanguage"]["name"]
             # if no languages given just add all
             if len(languages) == 0:
-                table.append([node["name"], node[url_protocol],
-                              primary_language])
+                filtered_nodes.append(node)
             # if languages were defined check them
             if len(languages) > 0 and matches_given_language(languages,
                                                              primary_language):
-                table.append([node["name"], node[url_protocol],
-                              primary_language])
-    table_data = tabulate(table, headers=["name", "url", "language"],
-                          tablefmt="github")
-    print(table_data)
-    return table_data
+                filtered_nodes.append(node)
+    return filtered_nodes
 
 
 def collate(query_response):

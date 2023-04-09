@@ -1,5 +1,5 @@
 from src.read_namespace.query_github.fetch_org_repos import \
-    collate
+    collate, filter_by_language
 
 response = {"data": {"organization": {
     "repositories": {
@@ -10,11 +10,17 @@ response = {"data": {"organization": {
         "nodes": [
             {
                 "name": ".github",
-                "url": "https://github.com/kubernetes-client/.github"
+                "url": "https://github.com/kubernetes-client/.github",
+                "primaryLanguage": {
+                    "name": "thing"
+                }
             },
             {
                 "name": "c",
-                "url": "https://github.com/kubernetes-client/c"
+                "url": "https://github.com/kubernetes-client/c",
+                "primaryLanguage": {
+                    "name": "c"
+                }
             },
             {
                 "name": "csharp",
@@ -26,7 +32,10 @@ response = {"data": {"organization": {
             },
             {
                 "name": "go",
-                "url": "https://github.com/kubernetes-client/go"
+                "url": "https://github.com/kubernetes-client/go",
+                "primaryLanguage": {
+                    "name": "Go"
+                }
             },
             {
                 "name": "go-base",
@@ -50,7 +59,11 @@ response = {"data": {"organization": {
             },
             {
                 "name": "python",
-                "url": "https://github.com/kubernetes-client/python"
+                "url": "https://github.com/kubernetes-client/python",
+                "primaryLanguage": {
+                    "name": "Python"
+                }
+
             },
             {
                 "name": "python-base",
@@ -70,3 +83,11 @@ def test_collate():
     collated = collate(response)
     assert len(collated) == len(
         response["data"]["organization"]["repositories"]["nodes"])
+
+
+def test_filter_by_language():
+    test_org = "kubernetes-client"
+    test_languages = ["python", "go"]
+    collated = collate(response)
+    filtered = filter_by_language(collated, test_languages)
+    assert len(filtered) == 2
