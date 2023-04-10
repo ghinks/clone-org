@@ -18,7 +18,6 @@ def nested_keys_exist(dictionary, keys):
             f"Dictionary {dictionary!r} was passed with non list set of keys")
     keys_found = []
     nested_dict = dictionary
-    chain = ""
     for key in keys:
         if key is None:
             return False
