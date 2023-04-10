@@ -17,9 +17,5 @@ def nested_keys_exist(dictionary, keys):
             nested_dict = nested_dict[key]
             keys_found.append(key)
         except KeyError:
-            if len(keys_found):
-                for foundling in list(keys_found):
-                    chain += f"{foundling}."
-            print(f"keys found were {chain}, next key was MISSING")
             return False
     return True
