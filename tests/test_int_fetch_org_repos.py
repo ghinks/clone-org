@@ -1,6 +1,6 @@
 import pytest
 
-from src.read_namespace.query_github.fetch_org_repos import fetch_org_repos, \
+from src.clone_github_org.query_github.fetch_org_repos import fetch_org_repos, \
     fetch_num_org_repos, paginate_over_org
 
 
