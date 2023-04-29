@@ -1,4 +1,4 @@
-from src.read_namespace.query_github.fetch_org_repos import \
+from src.clone_github_org.query_github.fetch_org_repos import \
     collate, filter_by_language
 
 response = {"data": {"organization": {

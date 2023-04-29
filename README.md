@@ -4,7 +4,7 @@
 A common situation that folks find themselves in when starting to work with an organization is
 the ability to check out all the code and essentially familiarize themselves with the code base
 and even grep the code base looking for things.
-read_namespace is designed to lessen the pain and give you a one-stop clone the organization
+clone_github_org is designed to lessen the pain and give you a one-stop clone the organization
 toolkit.
 
 This module queries the GitHub graphql endpoint, and you must have 'GITHUB_TOKEN' defined in your

@@ -3,12 +3,12 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "read_namespace"
-version = "0.0.8"
+name = "clone-github-org"
+version = "1.0.0"
 dynamic = ["dependencies"]
 
 [project.scripts]
-clone-org = "read_namespace.main:clone"
+clone-org = "clone_github_org.main:clone"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
