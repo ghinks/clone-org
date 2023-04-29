@@ -1,50 +1,49 @@
-Clone github namespace
-==============================
-Clone an organization's repos.
+# Clone GitHub namespace
+
+## Clone an organization's repos.
 A common situation that folks find themselves in when starting to work with an organization is
 the ability to check out all the code and essentially familiarize themselves with the code base
 and even grep the code base looking for things.
-read_namespace is designed to lessen the pain and give you a one stop clone the organization
+read_namespace is designed to lessen the pain and give you a one-stop clone the organization
 toolkit.
-This module queries the github graphql endpoint and you must have 'GITHUB_TOKEN' defined in your
+
+This module queries the GitHub graphql endpoint, and you must have 'GITHUB_TOKEN' defined in your
 environment for the organization to be queried. The clone may be optionally either https or ssh
 
 This is a module that exposes a console script *clone-org* that can clone
 all the repositories for the given organization
 
-Installing
-==============================
-.. code-block:: text
-
+## Installing
+```shell
     $ pip install read-github-namespace
+```
 
-A Simple Example
-==============================
-.. code-block:: text
-
+### A Simple Example
+```shell
     $ clone-org -o kubernetes-client -p https -f ~/dev/kub-client-repos
+```
 
-Help
-========================================
+## Help
 
-.. code-block:: text
-
+```shell
     $ clone-org -h
+```
 
-.. code-block:: text
-
+```shell
 usage: clone-org [-h] [-o ORGANIZATION] [-l LANGUAGES] [-p {https,ssh}]
                  [-f FOLDER] [-c] [-d] [-v]
+```
 
 Clone an organization's repos. A common situation that folks find themselves
 in when starting to work with an organization is the ability to check out all
 the code and essentially familiarize themselves with the code base and even
 grep the code base looking for things. read_namespace is designed to lessen
-the pain and give you a one stop clone the organization toolkit. This module
-queries the github graphql endpoint and you must have 'GITHUB_TOKEN' defined
+the pain and give you a one-stop clone the organization toolkit. This module
+queries the GitHub graphql endpoint, and you must have 'GITHUB_TOKEN' defined
 in your environment for the organization to be queried. The clone may be
 optionally either https or ssh
 
+```shell
 options:
   -h, --help            show this help message and exit
   -o ORGANIZATION, --organization ORGANIZATION
@@ -74,3 +73,4 @@ options:
                         before cloning. The dry run option will print out the
                         repositories in the organization specified and exit.
   -v, --version         Print version and exit
+```
