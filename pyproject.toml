@@ -4,11 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clone-github-org"
-version = "1.0.0"
+version = "1.0.1"
 dynamic = ["dependencies"]
+description = "Clone all repos from a GitHub organization"
 
 [project.scripts]
 clone-org = "clone_github_org.main:clone"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+
+[metadata]
+long_description = """blah blah blah"""
