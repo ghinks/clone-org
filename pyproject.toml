@@ -3,16 +3,16 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "clone-github-org"
-version = "1.0.1"
+name = "clone-org"
+version = "0.0.2"
 dynamic = ["dependencies"]
 description = "Clone all repos from a GitHub organization"
 
+[project.urls]
+"Source Code" = "https://github.com/ghinks/clone-org"
+
 [project.scripts]
-clone-org = "clone_github_org.main:clone"
+clone-org = "clone_org.main:clone"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
-
-[metadata]
-long_description = """blah blah blah"""

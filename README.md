@@ -1,21 +1,30 @@
 # Clone GitHub namespace
 
 ## Clone an organization's repos.
-A common situation that folks find themselves in when starting to work with an organization is
-the ability to check out all the code and essentially familiarize themselves with the code base
-and even grep the code base looking for things.
-clone-github-org is designed to lessen the pain and give you a one-stop clone the organization
-toolkit.
 
-This module queries the GitHub graphql endpoint, and you must have 'GITHUB_TOKEN' defined in your
-environment for the organization to be queried. The clone may be optionally either https or ssh
+Clone an organization's repos. A common situation that folks find themselves
+in when starting to work with an organization is the ability to check out all
+the code and essentially familiarize themselves with the code base and even
+grep the code base looking for things. clone-org is designed to lessen
+the pain and give you a one-stop clone the organization toolkit. This module
+queries the GitHub graphql endpoint.
 
-This is a module that exposes a console script *clone-org* that can clone
-all the repositories for the given organization
+Clone-org uses the installed version of git on your machine and executes shell
+commands.
+
+Currently, clone-org only supports GitHub and other cloud providers will be
+tested in the future.
+
+#### For https remotes
+You must have 'GITHUB_TOKEN' defined in your environment for the organization
+to be queried. The clone may be optionally either https or ssh
+
+#### For ssh remotes
+You must have your ssh keys set up in current shell.
 
 ## Installing
 ```shell
-    $ pip install clone-github-org
+    $ pip install clone-org
 ```
 
 ### A Simple Example
@@ -37,11 +46,22 @@ usage: clone-org [-h] [-o ORGANIZATION] [-l LANGUAGES] [-p {https,ssh}]
 Clone an organization's repos. A common situation that folks find themselves
 in when starting to work with an organization is the ability to check out all
 the code and essentially familiarize themselves with the code base and even
-grep the code base looking for things. clone-github-org is designed to lessen
+grep the code base looking for things. clone-org is designed to lessen
 the pain and give you a one-stop clone the organization toolkit. This module
-queries the GitHub graphql endpoint, and you must have 'GITHUB_TOKEN' defined
-in your environment for the organization to be queried. The clone may be
-optionally either https or ssh
+queries the GitHub graphql endpoint.
+
+Clone-org uses the installed version of git on your machine and executes shell
+commands.
+
+Currently, clone-org only supports GitHub and other cloud providers will be
+tested in the future.
+
+#### For https remotes
+You must have 'GITHUB_TOKEN' defined in your environment for the organization 
+to be queried. The clone may be optionally either https or ssh
+
+#### For ssh remotes
+You must have your ssh keys set up in current shell.
 
 ```shell
 options:
