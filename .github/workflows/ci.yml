@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ["3.x"]
         include:
           - os: windows-latest
             python-version: ["3.x"]
