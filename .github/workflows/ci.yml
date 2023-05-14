@@ -10,13 +10,6 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: ["3.x"]
-        include:
-          - os: windows-latest
-            python-version: ["3.x"]
-          - os: ubuntu-latest
-            python-version: ["3.8", "3.9", "3.10", "3.11"]
-          - os: macos-latest
-            python-version: ["3.x"]
 
     steps:
       - uses: actions/checkout@v3
