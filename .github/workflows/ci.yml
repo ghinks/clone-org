@@ -5,10 +5,17 @@ on: [push, workflow_dispatch, pull_request]
 jobs:
   build:
 
-    runs-on: [windows-latest]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.x"]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        include:
+          - os: windows-latest
+            python-version: ["3.x"]
+          - os: ubuntu-latest
+            python-version: ["3.8", "3.9", "3.10", "3.11"]
+          - os: macos-latest
+            python-version: ["3.x"]
 
     steps:
       - uses: actions/checkout@v3
