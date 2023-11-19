@@ -43,4 +43,4 @@ jobs:
           pytest tests -m "not integration"
       - name: Build package
         run: |
-          python -m build
+          poetry build
