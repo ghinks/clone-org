@@ -1,5 +1,5 @@
 import pytest
-from src.clone_org.utils.check_dict import nested_keys_exist
+from clone_org.utils.check_dict import nested_keys_exist
 
 
 @pytest.fixture()

@@ -1,5 +1,5 @@
 import pytest
-from src.clone_org.arg_parsing.parse_cmd_line import get_url_type, \
+from clone_org.arg_parsing.parse_cmd_line import get_url_type, \
     create_new_folder, split_languages
 import os
 import uuid

@@ -1,4 +1,4 @@
-from src.clone_org.query_github.fetch_org_repos import tabulate_nodes
+from clone_org.query_github.fetch_org_repos import tabulate_nodes
 
 response = {
     "nodes": [
