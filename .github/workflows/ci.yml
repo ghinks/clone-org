@@ -40,7 +40,7 @@ jobs:
           flake8 ./clone_org/ --count --max-complexity=10 --max-line-length=79 --statistics
       - name: Test with pytest
         run: |
-          pytest tests -m "not integration"
+          poetry run pytest tests -m "not integration"
       - name: Build package
         run: |
           poetry build
