@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from sgqlc.endpoint.http import HTTPEndpoint
+import sgqlc.endpoint.http
 from ..utils.check_dict import nested_keys_exist
 from math import ceil
 from tabulate import tabulate
@@ -23,7 +23,7 @@ def org_graph_query(organization, query_file, variables):
     query_file = Path(__file__).with_name(query_file)
     with query_file.open('r') as f:
         query = f.read()
-    endpoint = HTTPEndpoint(url, headers)
+    endpoint = sgqlc.endpoint.http.HTTPEndpoint(url, headers)
     result = endpoint(query, variables)
 
     return result
