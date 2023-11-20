@@ -1,7 +1,0 @@
-[options]
-package_dir =
-    = src
-
-[options.package_data]
-clone_org.query_github =
-    *.graphql
