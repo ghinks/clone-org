@@ -1,18 +1,22 @@
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "clone-org"
-version = "0.0.4"
-dynamic = ["dependencies"]
+version = "1.0.0"
 description = "Clone all repos from a GitHub organization"
+authors = ["Glenn Hinks <ghinks@yahoo.com>"]
+license = "Apache License 2.0"
+readme = "README.md"
+packages = [{include = "clone_org"}]
 
-[project.urls]
-"Source Code" = "https://github.com/ghinks/clone-org"
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0.0"
+sgqlc = "^16.3"
+tabulate = "^0.9.0"
+flake8 = "^6.1.0"
+pytest = "^7.4.3"
 
-[project.scripts]
+[tool.poetry.scripts]
 clone-org = "clone_org.main:clone"
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
