@@ -12,7 +12,7 @@ python = ">=3.8.1,<4.0.0"
 sgqlc = "^16.3"
 tabulate = "^0.9.0"
 flake8 = "^6.1.0"
-pytest = "^7.4.3"
+pytest = ">=7.4.3,<9.0.0"
 
 [tool.poetry.scripts]
 clone-org = "clone_org.main:clone"
