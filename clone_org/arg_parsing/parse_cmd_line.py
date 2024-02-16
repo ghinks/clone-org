@@ -1,7 +1,8 @@
 import re
 import argparse
 import os
-import pkg_resources
+#import pkg_resources
+import importlib.metadata
 
 
 def parse_cmd_line():
@@ -117,7 +118,8 @@ def create_new_folder(to_folder):
 
 
 def print_toml_version():
-    version = pkg_resources.get_distribution("clone-org")
+    #version = pkg_resources.get_distribution("clone-org")
+    version = importlib.metadata.version("clone-org")
     print(f"Current version is {version}")
 
 
