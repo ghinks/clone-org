@@ -1,7 +1,6 @@
 import re
 import argparse
 import os
-#import pkg_resources
 import importlib.metadata
 
 
