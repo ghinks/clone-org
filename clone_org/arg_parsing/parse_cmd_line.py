@@ -117,7 +117,6 @@ def create_new_folder(to_folder):
 
 
 def print_toml_version():
-    #version = pkg_resources.get_distribution("clone-org")
     version = importlib.metadata.version("clone-org")
     print(f"Current version is {version}")
 
