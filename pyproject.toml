@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "clone-org"
-version = "1.0.1"
+version = "1.0.2"
 description = "Clone all repos from a GitHub organization"
 authors = ["Glenn Hinks <ghinks@yahoo.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
 packages = [{include = "clone_org"}]
+repository = "https://github.com/username/clone-org"  # Add your GitHub repository URL here
+homepage = "https://github.com/username/clone-org"  # Add your project homepage URL here
+
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0.0"
