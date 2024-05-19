@@ -2,7 +2,13 @@
 
 ## Clone an organization's repos.
 
-Clone an organization's repos. A common situation that folks find themselves
+Clone an organization's repos. Clone all repos in an organization or some by 
+language used. 
+```shell
+    $ clone-org -o kubernetes-client -p https -f ~/dev/kub-client-repos -l python,go
+```
+
+A common situation that folks find themselves
 in when starting to work with an organization is the ability to check out all
 the code and essentially familiarize themselves with the code base and even
 grep the code base looking for things. clone-org is designed to lessen
