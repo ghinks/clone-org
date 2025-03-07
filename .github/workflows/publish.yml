@@ -1,5 +1,8 @@
 name: Increment Version and Publish to PyPI
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
