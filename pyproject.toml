@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "clone-org"
 version = "1.0.8"
-description = "Clone repos from an organization by languge used in the repo"
+description = "Clone all the repos or just some by language from an org"
 authors = ["Glenn Hinks <ghinks@yahoo.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
