@@ -12,7 +12,7 @@ homepage = "https://github.com/ghinks/clone-org"  # Add your project homepage UR
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0.0"
-sgqlc = "^16.3"
+sgqlc = ">=16.3,<18.0"
 tabulate = "^0.9.0"
 flake8 = ">=6.1,<8.0"
 pytest = ">=7.4.3,<9.0.0"
