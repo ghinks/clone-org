@@ -162,20 +162,21 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments
 
 [[package]]
 name = "sgqlc"
-version = "16.5"
+version = "17"
 description = "Simple GraphQL Client"
 optional = false
 python-versions = "<4,>=3.8"
 groups = ["main"]
 files = [
-    {file = "sgqlc-16.5-py3-none-any.whl", hash = "sha256:56952622e3fcd771e079de290cf8a244dc014cbd9b65059d04f262ec8d8f0f44"},
-    {file = "sgqlc-16.5.tar.gz", hash = "sha256:93edcd29ee138f5305d13f211a2b2091bd77873c404c87b87ae16a4023c62d4a"},
+    {file = "sgqlc-17-py3-none-any.whl", hash = "sha256:99187c656fd0d5f9c81e7081d2ae569823b6c9a14a6e37eb00a39602808841f0"},
+    {file = "sgqlc-17.tar.gz", hash = "sha256:4febd6d00f001c0fe0dd571e27d87e6d5ae071e8d1f61c66fa772449910953fb"},
 ]
 
 [package.dependencies]
-graphql-core = ">=3.2.4,<4.0.0"
+graphql-core = ">=3.2.6,<3.3.0"
 
 [package.extras]
+httpx = ["httpx"]
 requests = ["requests"]
 websocket = ["websocket-client"]
 
@@ -223,4 +224,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.8.1,<4.0.0"
-content-hash = "76fd8f6d71f6a97e7b7ee911581ad8944bf7ac75206f9b785b9b50a331e2e906"
+content-hash = "dc5a12555488f80a4901b69244ff837fe9f0045b7246278f84db082f469a5adf"
