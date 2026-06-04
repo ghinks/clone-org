@@ -162,14 +162,14 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments
 
 [[package]]
 name = "sgqlc"
-version = "17.1"
+version = "18"
 description = "Simple GraphQL Client"
 optional = false
 python-versions = "<4,>=3.8"
 groups = ["main"]
 files = [
-    {file = "sgqlc-17.1-py3-none-any.whl", hash = "sha256:d4d030ee687b66a840d605c81060585998fc22bba805b55e496911108800fc48"},
-    {file = "sgqlc-17.1.tar.gz", hash = "sha256:93309057889894899819e6aefee544e3d9aa85e33f694b88fb657526c45df4a4"},
+    {file = "sgqlc-18-py3-none-any.whl", hash = "sha256:7af53b5c1aab4602a98a36d6d32bd641e33f602b9b72468885f2505c59c536af"},
+    {file = "sgqlc-18.tar.gz", hash = "sha256:a09f76fb69a2760523144f8d3acbf06a1b3710f63bf87fbac142d3538b1d639b"},
 ]
 
 [package.dependencies]
@@ -225,4 +225,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.8.1,<4.0.0"
-content-hash = "dc5a12555488f80a4901b69244ff837fe9f0045b7246278f84db082f469a5adf"
+content-hash = "28aad59faf5033000a968104d8d1221954c644ab82379cada33061594bd55191"
